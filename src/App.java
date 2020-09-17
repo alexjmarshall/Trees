@@ -23,6 +23,17 @@ public class App {
         BT.add(14);
         BT.add(13);
         BT.add(15);
-        System.out.println(BT.size(BT.root));
+
+        BTNode five = BT.preorderNext(BT.root);
+        BTNode four = BT.preorderNext(five);
+        BTNode seven = BT.preorderNext(four); //then this was null
+        BTNode six = BT.preorderNext(seven);
+        BTNode eight = BT.preorderNext(six);
+        BTNode twelve = BT.preorderNext(eight);
+        BTNode eleven = BT.preorderNext(twelve);
+        BTNode ten = BT.preorderNext(eleven);
+        BTNode fourteen = BT.preorderNext(ten); //this was null -- 
+        BTNode thirteen = BT.preorderNext(fourteen);
+        BTNode fifteen = BT.preorderNext(thirteen);
     }
 }

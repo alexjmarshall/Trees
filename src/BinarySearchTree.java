@@ -60,15 +60,39 @@ public class BinarySearchTree extends BinaryTree {
         } else if (x.right != null) {
             return x.right;
         } else {
-            if(x == x.parent.left) {
-                return x.parent.right;
-            } else {
-                BTNode p = x.parent;
-                while (p.parent != null && p == p.parent.right) {
-                    p = p.parent;
-                }
-                return p.parent.right;
+            //go up the tree until find a new right node to visit 
+            BTNode prev = x;
+            BTNode p = x.parent;
+            
+            while(p.right == null || p.right == prev) {
+                prev = p;
+                p = p.parent;
             }
+
+            if(p.right != null) {
+                return p.right;
+            } else {
+                return null;
+            }
+
+
+            // if(x == x.parent.left) {
+            //     //return x.parent.right; //had to fix this -- what if no right?
+            //     if (x.parent.right != null) return x.parent.right;
+            //     else {
+            //         BTNode p = x.parent;
+            //         while (p.parent != null && p == p.parent.right) {
+            //             p = p.parent;
+            //         }
+            //         return p.parent.right;
+            //     }
+            // } else {
+            //     BTNode p = x.parent;
+            //     while (p.parent != null && p == p.parent.right) {
+            //         p = p.parent;
+            //     }
+            //     return p.parent.right;
+            // }
         }
     }
 
