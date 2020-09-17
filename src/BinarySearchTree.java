@@ -53,4 +53,30 @@ public class BinarySearchTree extends BinaryTree {
         }
         return true;
     }
+
+    public BTNode preorderNext(BTNode x) {
+        if(x.left != null) {
+            return x.left;
+        } else if (x.right != null) {
+            return x.right;
+        } else {
+            if(x == x.parent.left) {
+                return x.parent.right;
+            } else {
+                BTNode p = x.parent;
+                while (p.parent != null && p == p.parent.right) {
+                    p = p.parent;
+                }
+                return p.parent.right;
+            }
+        }
+    }
+
+    // public BTNode postorderNext(BTNode x) {
+
+    // }
+
+    // public BTNode inorderNext(BTNode x) {
+
+    // }
 }
