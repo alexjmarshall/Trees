@@ -1,4 +1,6 @@
 public class BinarySearchTree extends BinaryTree {
+    int n = 0;
+
     public int find(int x) {
         BTNode w = root;
         BTNode z = null;
@@ -18,7 +20,15 @@ public class BinarySearchTree extends BinaryTree {
 
     public boolean add(int x) {
         BTNode p = findLastNode(x);
-        return addChild(p, new BTNode(x));
+        if(addChild(p, new BTNode(x))) {
+            n++;
+            return true;
+        }
+        return false;
+    }
+
+    public int size() {
+        return n;
     }
 
     public BTNode findLastNode(int x) {
@@ -78,6 +88,18 @@ public class BinarySearchTree extends BinaryTree {
         }
     }
 
+    public void preOrderNumber(BTNode x) {
+        int n = 0;
+        BTNode node = x;
+
+        while(x != null) {
+            x = preorderNext(x);
+            n++;
+        }
+
+        node.preOrderNumber = size() - n + 1;
+    }
+
     public BTNode postorderNext(BTNode x) {
         BTNode p = x.parent;
 
@@ -99,6 +121,18 @@ public class BinarySearchTree extends BinaryTree {
 
             return r;
         }
+    }
+
+    public void postOrderNumber(BTNode x) {
+        int n = 0;
+        BTNode node = x;
+
+        while(x != null) {
+            x = postorderNext(x);
+            n++;
+        }
+
+        node.postOrderNumber = size() - n + 1;
     }
 
     public BTNode inorderNext(BTNode x) {
@@ -123,5 +157,17 @@ public class BinarySearchTree extends BinaryTree {
                 return p.parent;
             }
         }
+    }
+
+    public void inOrderNumber(BTNode x) {
+        int n = 0;
+        BTNode node = x;
+
+        while(x != null) {
+            x = inorderNext(x);
+            n++;
+        }
+
+        node.inOrderNumber = size() - n + 1;
     }
 }

@@ -3,6 +3,9 @@ public class BTNode {
   BTNode left;
   BTNode right;
   int value;
+  int preOrderNumber;
+  int postOrderNumber;
+  int inOrderNumber;
 
   public BTNode(int value) {
     this.value = value;
