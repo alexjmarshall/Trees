@@ -55,21 +55,22 @@ public class BinarySearchTree extends BinaryTree {
     }
 
     public BTNode preorderNext(BTNode x) {
-        if(x.left != null) { // 1
+        if(x.left != null) {
             return x.left;
-        } else if (x.right != null) { // 1
+        } else if (x.right != null) {
             return x.right;
         } else {
             // go up the tree until find a new right node to visit 
-            BTNode prev = x; // 1
-            BTNode p = x.parent; // 1
+            BTNode prev = x;
+            BTNode p = x.parent;
             
-            while(p.right == null || p.right == prev) { // 2
-                prev = p; // 1
-                p = p.parent; // 1
-            } // total: 4 * height of tree in worst case, which equals n in worst case
+            while(p.right == null || p.right == prev) {
+                prev = p;
+                if(p.parent == null) return null;
+                p = p.parent;
+            }
 
-            if(p.right != null) { // 1
+            if(p.right != null) {
                 return p.right;
             } else {
                 return null;
@@ -100,22 +101,14 @@ public class BinarySearchTree extends BinaryTree {
         }
     }
 
-    public BTNode inorderNext(BTNode x) { //TODO make sure handle end cases for all these
-        // if node is left child of parent, has no right child, return parent
-        // if node is left child, and has a right child, go to right child, then down left side to leaf
-        // if node is right child, and has a right child, return right child
-        // if node is right child, and has no right child, 
-
-        // if node has a right child, go to right then down left side and return
-        // if node does not have right child, and is left child, then return parent
-        // if node does not have a right child, and is right child, then go up tree until left child
-
+    public BTNode inorderNext(BTNode x) {
         if(x.right != null) {
             BTNode r = x.right;
 
             while(r.left != null) {
                 r = r.left;
             }
+
             return r;
         } else {
             if(x == x.parent.left) {

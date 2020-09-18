@@ -46,6 +46,8 @@ public class App {
         // System.out.println("thirteen value: " + thirteen.value);
         // BTNode fifteen = BT.preorderNext(thirteen);
         // System.out.println("fiften value: " + fifteen.value);
+        // BTNode nullNode = BT.preorderNext(fifteen);
+        // System.out.println("nullNode value: " + nullNode);
 
         // BTNode four = BT.findLastNode(4);
         // BTNode six = BT.postorderNext(four);
@@ -70,6 +72,8 @@ public class App {
         // System.out.println("twelve value: " + twelve.value);
         // BTNode nine = BT.postorderNext(twelve);
         // System.out.println("nine value: " + nine.value);
+        // BTNode nullNode = BT.postorderNext(nine);
+        // System.out.println("nullNode value: " + nullNode);
 
         BTNode four = BT.findLastNode(4);
         BTNode five = BT.inorderNext(four);
