@@ -24,6 +24,28 @@ public class App {
         BT.add(13); // PreONum 11 PoONum 8 InONum 10
         BT.add(15); // PreONum 12 PoONum 9 InONum 12
 
+        BTNode root = BT.findLastNode(9);
+        System.out.println(BT.isBinarySearchTree(root)); // expect true
+
+        BTNode seven = BT.findLastNode(7);
+        System.out.println(BT.isBinarySearchTree(seven)); // expect true
+
+        BTNode six = BT.findLastNode(6);
+        six.value = 99;
+        System.out.println(BT.isBinarySearchTree(root)); // expect false
+        System.out.println(BT.isBinarySearchTree(seven)); // expect false
+
+        BTNode twelve = BT.findLastNode(12);
+        System.out.println(BT.isBinarySearchTree(twelve)); // expect true
+
+        BTNode thirteen = BT.findLastNode(13);
+        thirteen.value = 99;
+        System.out.println(BT.isBinarySearchTree(twelve)); // expect false
+
+        BTNode fourteen = BT.findLastNode(14);
+        fourteen.left = null;
+        System.out.println(BT.isBinarySearchTree(twelve)); // expect true
+
         // BTNode nine = BT.findLastNode(9);
         // BT.preOrderNumber(nine);
         // System.out.println(nine.preOrderNumber);
@@ -98,42 +120,42 @@ public class App {
         // BT.postOrderNumber(fifteen);
         // System.out.println(fifteen.postOrderNumber);
 
-        BTNode nine = BT.findLastNode(9);
-        BT.inOrderNumber(nine);
-        System.out.println(nine.inOrderNumber);
-        BTNode five = BT.findLastNode(5);
-        BT.inOrderNumber(five);
-        System.out.println(five.inOrderNumber);
-        BTNode four = BT.findLastNode(4);
-        BT.inOrderNumber(four);
-        System.out.println(four.inOrderNumber);
-        BTNode seven = BT.findLastNode(7);
-        BT.inOrderNumber(seven);
-        System.out.println(seven.inOrderNumber);
-        BTNode six = BT.findLastNode(6);
-        BT.inOrderNumber(six);
-        System.out.println(six.inOrderNumber);
-        BTNode eight = BT.findLastNode(8);
-        BT.inOrderNumber(eight);
-        System.out.println(eight.inOrderNumber);
-        BTNode twelve = BT.findLastNode(12);
-        BT.inOrderNumber(twelve);
-        System.out.println(twelve.inOrderNumber);
-        BTNode eleven = BT.findLastNode(11);
-        BT.inOrderNumber(eleven);
-        System.out.println(eleven.inOrderNumber);
-        BTNode ten = BT.findLastNode(10);
-        BT.inOrderNumber(ten);
-        System.out.println(ten.inOrderNumber);
-        BTNode fourteen = BT.findLastNode(14);
-        BT.inOrderNumber(fourteen);
-        System.out.println(fourteen.inOrderNumber);
-        BTNode thirteen = BT.findLastNode(13);
-        BT.inOrderNumber(thirteen);
-        System.out.println(thirteen.inOrderNumber);
-        BTNode fifteen = BT.findLastNode(15);
-        BT.inOrderNumber(fifteen);
-        System.out.println(fifteen.inOrderNumber);
+        // BTNode nine = BT.findLastNode(9);
+        // BT.inOrderNumber(nine);
+        // System.out.println(nine.inOrderNumber);
+        // BTNode five = BT.findLastNode(5);
+        // BT.inOrderNumber(five);
+        // System.out.println(five.inOrderNumber);
+        // BTNode four = BT.findLastNode(4);
+        // BT.inOrderNumber(four);
+        // System.out.println(four.inOrderNumber);
+        // BTNode seven = BT.findLastNode(7);
+        // BT.inOrderNumber(seven);
+        // System.out.println(seven.inOrderNumber);
+        // BTNode six = BT.findLastNode(6);
+        // BT.inOrderNumber(six);
+        // System.out.println(six.inOrderNumber);
+        // BTNode eight = BT.findLastNode(8);
+        // BT.inOrderNumber(eight);
+        // System.out.println(eight.inOrderNumber);
+        // BTNode twelve = BT.findLastNode(12);
+        // BT.inOrderNumber(twelve);
+        // System.out.println(twelve.inOrderNumber);
+        // BTNode eleven = BT.findLastNode(11);
+        // BT.inOrderNumber(eleven);
+        // System.out.println(eleven.inOrderNumber);
+        // BTNode ten = BT.findLastNode(10);
+        // BT.inOrderNumber(ten);
+        // System.out.println(ten.inOrderNumber);
+        // BTNode fourteen = BT.findLastNode(14);
+        // BT.inOrderNumber(fourteen);
+        // System.out.println(fourteen.inOrderNumber);
+        // BTNode thirteen = BT.findLastNode(13);
+        // BT.inOrderNumber(thirteen);
+        // System.out.println(thirteen.inOrderNumber);
+        // BTNode fifteen = BT.findLastNode(15);
+        // BT.inOrderNumber(fifteen);
+        // System.out.println(fifteen.inOrderNumber);
 
         // BTNode five = BT.preorderNext(BT.root);
         // System.out.println("five value: " + five.value);
@@ -211,5 +233,7 @@ public class App {
         // System.out.println("fifteen value: " + fifteen.value);
         // BTNode nullNode = BT.inorderNext(fifteen);
         // System.out.println("nullNode value: " + nullNode);
+
+        
     }
 }

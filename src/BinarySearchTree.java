@@ -169,5 +169,5 @@ public class BinarySearchTree extends BinaryTree {
         }
 
         node.inOrderNumber = size() - n + 1;
-    }
+    } 
 }
