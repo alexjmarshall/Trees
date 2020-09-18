@@ -78,12 +78,6 @@ public class BinarySearchTree extends BinaryTree {
     }
 
     public BTNode postorderNext(BTNode x) {
-        // go to parent
-        // if parent is null, return null
-        // if this node is right node of parent, return parent
-        // if this node is left node of parent, go to parents right node, and travel down left
-        // side until find leaf, and return
-
         BTNode p = x.parent;
 
         if(p == null) {
@@ -94,19 +88,47 @@ public class BinarySearchTree extends BinaryTree {
             BTNode r = p.right;
             if(r == null) return p;
 
-            while(r.left != null || r.right != null) { //changed from and to or
+            while(r.left != null || r.right != null) {
                 if(r.left != null) {
                     r = r.left;
-                    continue;
+                } else {
+                    r = r.right;
                 }
-                r = r.right;
             }
 
             return r;
         }
     }
 
-    // public BTNode inorderNext(BTNode x) {
+    public BTNode inorderNext(BTNode x) { //TODO make sure handle end cases for all these
+        // if node is left child of parent, has no right child, return parent
+        // if node is left child, and has a right child, go to right child, then down left side to leaf
+        // if node is right child, and has a right child, return right child
+        // if node is right child, and has no right child, 
 
-    // }
+        // if node has a right child, go to right then down left side and return
+        // if node does not have right child, and is left child, then return parent
+        // if node does not have a right child, and is right child, then go up tree until left child
+
+        if(x.right != null) {
+            BTNode r = x.right;
+
+            while(r.left != null) {
+                r = r.left;
+            }
+            return r;
+        } else {
+            if(x == x.parent.left) {
+                return x.parent;
+            } else {
+                BTNode p = x.parent;
+
+                while(p.parent != null && p == p.parent.right) {
+                    p = p.parent;
+                }
+
+                return p.parent;
+            }
+        }
+    }
 }
