@@ -15,7 +15,7 @@ public class App {
         BT.add(5);
         BT.add(4);
         BT.add(7);
-        BT.add(6);
+        // BT.add(6); eliminated this so I could make sure we go from 4 to 8, checking for case where node only has a right child
         BT.add(8);
         BT.add(12);
         BT.add(11);
@@ -24,16 +24,51 @@ public class App {
         BT.add(13);
         BT.add(15);
 
-        BTNode five = BT.preorderNext(BT.root);
-        BTNode four = BT.preorderNext(five);
-        BTNode seven = BT.preorderNext(four); //then this was null
-        BTNode six = BT.preorderNext(seven);
-        BTNode eight = BT.preorderNext(six);
-        BTNode twelve = BT.preorderNext(eight);
-        BTNode eleven = BT.preorderNext(twelve);
-        BTNode ten = BT.preorderNext(eleven);
-        BTNode fourteen = BT.preorderNext(ten); //this was null -- 
-        BTNode thirteen = BT.preorderNext(fourteen);
-        BTNode fifteen = BT.preorderNext(thirteen);
+        // BTNode five = BT.preorderNext(BT.root);
+        // System.out.println("five value: " + five.value);
+        // BTNode four = BT.preorderNext(five);
+        // System.out.println("four value: " + four.value);
+        // BTNode seven = BT.preorderNext(four);
+        // System.out.println("seven value: " + seven.value);
+        // BTNode six = BT.preorderNext(seven);
+        // System.out.println("six value: " + six.value);
+        // BTNode eight = BT.preorderNext(six);
+        // System.out.println("eight value: " + eight.value);
+        // BTNode twelve = BT.preorderNext(eight);
+        // System.out.println("twelve value: " + twelve.value);
+        // BTNode eleven = BT.preorderNext(twelve);
+        // System.out.println("eleven value: " + eleven.value);
+        // BTNode ten = BT.preorderNext(eleven);
+        // System.out.println("ten value: " + ten.value);
+        // BTNode fourteen = BT.preorderNext(ten);
+        // System.out.println("fourteen value: " + fourteen.value);
+        // BTNode thirteen = BT.preorderNext(fourteen);
+        // System.out.println("thirteen value: " + thirteen.value);
+        // BTNode fifteen = BT.preorderNext(thirteen);
+        // System.out.println("fiften value: " + fifteen.value);
+
+        BTNode four = BT.findLastNode(4);
+        BTNode six = BT.postorderNext(four);
+        System.out.println("six value: " + six.value);
+        BTNode eight = BT.postorderNext(six);
+        System.out.println("eight value: " + eight.value);
+        BTNode seven = BT.postorderNext(eight);
+        System.out.println("seven value: " + seven.value);
+        BTNode five = BT.postorderNext(seven);
+        System.out.println("five value: " + five.value);
+        BTNode ten = BT.postorderNext(five);
+        System.out.println("ten value: " + ten.value); //this value was 11
+        BTNode eleven = BT.postorderNext(ten);
+        System.out.println("eleven value: " + eleven.value);
+        BTNode thirteen = BT.postorderNext(eleven);
+        System.out.println("thirteen value: " + thirteen.value);
+        BTNode fifteen = BT.postorderNext(thirteen);
+        System.out.println("fifteen value: " + fifteen.value);
+        BTNode fourteen = BT.postorderNext(fifteen);
+        System.out.println("fourteen value: " + fourteen.value);
+        BTNode twelve = BT.postorderNext(fourteen);
+        System.out.println("twelve value: " + twelve.value); //this value was 13...using wrong method
+        BTNode nine = BT.postorderNext(twelve);
+        System.out.println("nine value: " + nine.value);
     }
 }

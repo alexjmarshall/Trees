@@ -55,50 +55,56 @@ public class BinarySearchTree extends BinaryTree {
     }
 
     public BTNode preorderNext(BTNode x) {
-        if(x.left != null) {
+        if(x.left != null) { // 1
             return x.left;
-        } else if (x.right != null) {
+        } else if (x.right != null) { // 1
             return x.right;
         } else {
-            //go up the tree until find a new right node to visit 
-            BTNode prev = x;
-            BTNode p = x.parent;
+            // go up the tree until find a new right node to visit 
+            BTNode prev = x; // 1
+            BTNode p = x.parent; // 1
             
-            while(p.right == null || p.right == prev) {
-                prev = p;
-                p = p.parent;
-            }
+            while(p.right == null || p.right == prev) { // 2
+                prev = p; // 1
+                p = p.parent; // 1
+            } // total: 4 * height of tree in worst case, which equals n in worst case
 
-            if(p.right != null) {
+            if(p.right != null) { // 1
                 return p.right;
             } else {
                 return null;
             }
-
-
-            // if(x == x.parent.left) {
-            //     //return x.parent.right; //had to fix this -- what if no right?
-            //     if (x.parent.right != null) return x.parent.right;
-            //     else {
-            //         BTNode p = x.parent;
-            //         while (p.parent != null && p == p.parent.right) {
-            //             p = p.parent;
-            //         }
-            //         return p.parent.right;
-            //     }
-            // } else {
-            //     BTNode p = x.parent;
-            //     while (p.parent != null && p == p.parent.right) {
-            //         p = p.parent;
-            //     }
-            //     return p.parent.right;
-            // }
         }
     }
 
-    // public BTNode postorderNext(BTNode x) {
+    public BTNode postorderNext(BTNode x) {
+        // go to parent
+        // if parent is null, return null
+        // if this node is right node of parent, return parent
+        // if this node is left node of parent, go to parents right node, and travel down left
+        // side until find leaf, and return
 
-    // }
+        BTNode p = x.parent;
+
+        if(p == null) {
+            return null;
+        } else if(x == p.right) {
+            return p;
+        } else {
+            BTNode r = p.right;
+            if(r == null) return p;
+
+            while(r.left != null || r.right != null) { //changed from and to or
+                if(r.left != null) {
+                    r = r.left;
+                    continue;
+                }
+                r = r.right;
+            }
+
+            return r;
+        }
+    }
 
     // public BTNode inorderNext(BTNode x) {
 
