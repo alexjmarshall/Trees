@@ -4,6 +4,11 @@ public class LinearHashTable {
     int d; // t.length = 2^d
     int q; // the number of non-null entries in t
 
+    public LinearHashTable(int d) {
+        int size = 2<<d;
+        t = new Object[size];
+    }
+
     class del {
         
     }
@@ -81,7 +86,7 @@ public class LinearHashTable {
     }
     
     public static void main(String args[]) {
-        LinearHashTable t = new LinearHashTable();
+        LinearHashTable t = new LinearHashTable(3);
 
         t.add(1);
         t.add(5);
