@@ -67,7 +67,7 @@ public class ScapegoatTree extends BinarySearchTree {
 	}
     
     public void rebuild(BTNode u) {
-        int ns = size();
+        int ns = size(u); // Reflection -- forgot u parameter!
         BTNode p = u.parent;
         BTNode[] a = new BTNode[ns];
         
@@ -85,24 +85,54 @@ public class ScapegoatTree extends BinarySearchTree {
         }
     }
 
-    private int packIntoArray(BTNode u, BTNode[] a, int i) {
-        if(u == null) return i;
-        i = packIntoArray(u.left, a, i);
-        a[i++] = u;
-        return packIntoArray(u.right, a , i);
+    protected int packIntoArray(BTNode u, BTNode[] a, int i) {
+		if (u == null) {
+			return i;
+		}
+		i = packIntoArray(u.left, a, i);
+		a[i++] = u;
+		return packIntoArray(u.right, a, i);
+	}
+
+	/**
+	 * A recursive helper that builds a perfectly balanced subtree out of
+	 * a[i],...,a[i+ns-1]
+	 * 
+	 * @param a
+	 * @param i
+	 * @param ns
+	 * @return the rooted of the newly created subtree
+	 */
+	protected BTNode buildBalanced(BTNode[] a, int i, int ns) {
+		if (ns == 0)
+			return null;
+		int m = ns / 2;
+		a[i + m].left = buildBalanced(a, i, m);
+		if (a[i + m].left != null)
+			a[i + m].left.parent = a[i + m];
+		a[i + m].right = buildBalanced(a, i + m + 1, ns - m - 1);
+		if (a[i + m].right != null)
+			a[i + m].right.parent = a[i + m];
+		return a[i + m];
+	}
+
+    public static void main(String args[]) {
+        ScapegoatTree t = new ScapegoatTree();
+
+        // t.add(1);
+        // t.add(5);
+        // t.add(2);
+        // t.add(4);
+        // t.add(3);
+        t.add(1);
+        t.add(2);
+        t.add(3);
+        t.add(4);
+        t.add(5);
+        t.add(6);
+        t.add(7);
+        t.add(8);
+        t.add(9);
+        t.add(10);
     }
-
-    private BTNode buildBalanced(BTNode[] a, int i, int ns) {
-        if(ns == 0) return null;
-        int m = ns / 2;
-        a[i + m].left = buildBalanced(a, i, m);
-        if(a[i + m].left != null) a[i + m].left.parent = a[i + m];
-
-        a[i + m].right = buildBalanced(a, i + m + 1, ns - m - 1);
-
-        if(a[1 + m].right != null) a[i + m].right.parent = a[i + m];
-
-        return a[i + m];
-    }
-
 }
