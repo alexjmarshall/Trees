@@ -4,7 +4,7 @@ public class LinearHashTable {
     int d; // t.length = 2^d
     int q; // the number of non-null entries in t
 
-    public LinearHashTable(int d) {
+    public LinearHashTable(int d) { // reflection: forgot to add this..also had to go object type with casts instead of integer and then make del class
         int size = 2<<d;
         t = new Object[size];
     }
