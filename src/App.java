@@ -1,15 +1,6 @@
 public class App {
     public static void main(String[] args) throws Exception {
 
-        // BinarySearchTree BT = new BinarySearchTree();
-        // BT.add(3);
-        // System.out.println(BT.size(BT.root));
-        // BT.add(3);
-        // System.out.println(BT.size(BT.root));
-        // BT.add(2);
-        // BT.add(5);
-        // System.out.println(BT.size(BT.root));
-
         BinarySearchTree BT = new BinarySearchTree();
         BT.add(9); // PreONum 1 PoONum 12 InONum 6
         BT.add(5); // PreONum 2 PoONum 5 InONum 2
@@ -233,7 +224,5 @@ public class App {
         // System.out.println("fifteen value: " + fifteen.value);
         // BTNode nullNode = BT.inorderNext(fifteen);
         // System.out.println("nullNode value: " + nullNode);
-
-        
     }
 }

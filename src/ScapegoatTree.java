@@ -15,23 +15,11 @@ public class ScapegoatTree extends BinarySearchTree {
         return d >= 0;
     }
 
-    /**
-	 * Compute the ceiling of log_{3/2}(q)
-	 * @param q
-	 * @return the ceiling of log_{3/2}(q)
-	 */
-	protected static final int log32(int q) {
+	protected static final double log32(int q) {
 		final double log23 = 2.4663034623764317;
-		return (int)Math.ceil(log23*Math.log(q));
+		return log23*Math.log(q);
 	}
 
-	/***
-	 * Do a normal BinarySearchTree insertion, but return the depth
-	 * of the newly inserted node. 
-	 * @param u - the new node to insert
-	 * @return the depth of the newly inserted node, or -1 if the node
-	 * was not inserted
-	 */
 	int addWithDepth(BTNode u) {
 		BTNode w = root;
 		if (w == null) {
@@ -67,7 +55,7 @@ public class ScapegoatTree extends BinarySearchTree {
 	}
     
     public void rebuild(BTNode u) {
-        int ns = size(u); // Reflection -- forgot u parameter!
+        int ns = size(u);
         BTNode p = u.parent;
         BTNode[] a = new BTNode[ns];
         
@@ -94,15 +82,6 @@ public class ScapegoatTree extends BinarySearchTree {
 		return packIntoArray(u.right, a, i);
 	}
 
-	/**
-	 * A recursive helper that builds a perfectly balanced subtree out of
-	 * a[i],...,a[i+ns-1]
-	 * 
-	 * @param a
-	 * @param i
-	 * @param ns
-	 * @return the rooted of the newly created subtree
-	 */
 	protected BTNode buildBalanced(BTNode[] a, int i, int ns) {
 		if (ns == 0)
 			return null;
@@ -114,25 +93,29 @@ public class ScapegoatTree extends BinarySearchTree {
 		if (a[i + m].right != null)
 			a[i + m].right.parent = a[i + m];
 		return a[i + m];
+    }
+    
+    String printPreOrderValues() {
+        BTNode x = root;
+        String vals = "";
+
+        while(x != null) {
+            vals += String.valueOf(x.value) + " ";
+            x = preorderNext(x);
+        }
+        return vals.trim();
 	}
 
-    public static void main(String args[]) {
+	public static void main(String args[]) {
         ScapegoatTree t = new ScapegoatTree();
 
-        // t.add(1);
-        // t.add(5);
-        // t.add(2);
-        // t.add(4);
-        // t.add(3);
         t.add(1);
-        t.add(2);
-        t.add(3);
-        t.add(4);
         t.add(5);
-        t.add(6);
-        t.add(7);
-        t.add(8);
-        t.add(9);
-        t.add(10);
+        t.add(2);
+        t.add(4);
+        t.add(3);
+
+        System.out.println(t.printPreOrderValues());
+        // Expecting 1 4 3 2 5
     }
 }

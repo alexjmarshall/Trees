@@ -4,7 +4,7 @@ public class LinearHashTable {
     int d; // t.length = 2^d
     int q; // the number of non-null entries in t
 
-    public LinearHashTable(int d) { // reflection: forgot to add this..also had to go object type with casts instead of integer and then make del class
+    public LinearHashTable(int d) {
         int size = 2<<d;
         t = new Object[size];
     }
@@ -84,6 +84,15 @@ public class LinearHashTable {
     private int hash(Integer x) {
         return x % 13;
     }
+
+    private String printValues() {
+        String values = "";
+        for(Object val : t) {
+            if(!(val instanceof del) && val != null)
+                values += String.valueOf(val) + " ";
+        }
+        return values.trim();
+    }
     
     public static void main(String args[]) {
         LinearHashTable t = new LinearHashTable(3);
@@ -103,5 +112,10 @@ public class LinearHashTable {
         t.add(111);
         t.add(145);
         t.add(146);
+
+        System.out.println(t.printValues());
+        /* Expected results:
+           26 1 39 14 15 5 16 17 21 18 19 20 111 145 146
+        */
     }
 }

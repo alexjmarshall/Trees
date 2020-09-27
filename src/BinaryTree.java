@@ -17,16 +17,4 @@ public class BinaryTree {
 
     return 1 + size(u.left) + size(u.right);
   }
-
-  public boolean isBinarySearchTree(BTNode x) { //move to BinarySearchTree.java
-    if(x == null) return true;
-    //if x has no children, return
-    if(x.left == null && x.right == null) {
-      if(x.parent.left != null && x == x.parent.left) {
-        return x.value < x.parent.value;
-      }
-      return x.value > x.parent.value;
-    }
-    return isBinarySearchTree(x.left) && isBinarySearchTree(x.right);
-  }
 }
